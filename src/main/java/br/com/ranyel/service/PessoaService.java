@@ -1,5 +1,7 @@
 package br.com.ranyel.service;
 
+import java.util.List;
+
 import br.com.ranyel.domain.Pessoa;
 import br.com.ranyel.repository.PessoaRepository;
 import jakarta.enterprise.context.RequestScoped;
@@ -30,5 +32,9 @@ public class PessoaService {
 	@Transactional
 	public void removerPessoa(Long id) {
 		repository.deleteById(id);
+	}
+
+	public List<Pessoa> buscarTodos() {
+		return repository.listAll();
 	}
 }

@@ -1,5 +1,7 @@
 package br.com.ranyel.resource;
 
+import java.util.List;
+
 import br.com.ranyel.domain.Pessoa;
 import br.com.ranyel.service.PessoaService;
 import jakarta.inject.Inject;
@@ -61,6 +63,17 @@ public class PessoaResource {
 		try {
 			service.removerPessoa(id);
 			return Response.ok("OK").build();
+		} catch (Exception e) {
+			return Response.status(500).entity("NOK").build();
+		}
+	}
+	
+	@GET
+	@Path("/listar")
+	public Response buscarTodos() {
+		try {
+			List<Pessoa> retorno = service.buscarTodos();
+			return Response.ok(retorno).build();
 		} catch (Exception e) {
 			return Response.status(500).entity("NOK").build();
 		}

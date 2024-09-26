@@ -4,16 +4,19 @@ import java.io.Serializable;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(schema = "dbo", name = "Pessoa")
+@Table(name = "Pessoa")
 public class Pessoa extends PanacheEntityBase implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY) 
 	private Long id;
 	private String nome;
 	private Integer idade;
